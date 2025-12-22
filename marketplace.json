@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "name": "Chronista Club Plugins",
+  "description": "Chronista開発スタイルを支えるClaude Codeプラグイン集",
+  "plugins": [
+    {
+      "name": "creo-memories",
+      "displayName": "Creo Memories",
+      "description": "永続記憶システム - セッションを超えて知識を蓄積",
+      "source": {
+        "type": "github",
+        "repo": "chronista-club/claude-plugin-creo-memories"
+      },
+      "version": "1.0.0",
+      "tags": ["memory", "persistence", "knowledge"]
+    },
+    {
+      "name": "vantage-point",
+      "displayName": "Vantage Point",
+      "description": "リッチダッシュボード - Markdown、HTML、画像をブラウザで表示",
+      "source": {
+        "type": "github",
+        "repo": "chronista-club/claude-plugin-vantage-point"
+      },
+      "version": "1.0.0",
+      "tags": ["dashboard", "visualization", "ui"]
+    },
+    {
+      "name": "chronista-style",
+      "displayName": "Chronista Style",
+      "description": "開発ワークフロー＆スキル - codeflow、SDG、fleetflow",
+      "source": {
+        "type": "github",
+        "repo": "chronista-club/claude-plugin-chronista-style"
+      },
+      "version": "1.0.0",
+      "tags": ["workflow", "skills", "development"]
+    }
+  ]
+}
