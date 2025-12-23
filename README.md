@@ -18,6 +18,7 @@ Chronista開発スタイルを支えるClaude Codeプラグイン集
 /plugin install chronista-club/claude-plugin-creo-memories
 /plugin install chronista-club/claude-plugin-vantage-point
 /plugin install chronista-club/claude-plugin-chronista-style
+/plugin install chronista-club/claude-plugin-fleetflow
 ```
 
 ## プラグイン一覧
@@ -27,6 +28,7 @@ Chronista開発スタイルを支えるClaude Codeプラグイン集
 | **creo-memories** | 永続記憶システム - セッションを超えて知識を蓄積 |
 | **vantage-point** | リッチダッシュボード - Markdown、HTML、画像をブラウザで表示 |
 | **chronista-style** | 開発ワークフロー＆スキル - codeflow、SDG、fleetflow |
+| **fleetflow** | コンテナオーケストレーション - KDL設定でDockerコンテナを管理 |
 
 ## ライセンス
 
