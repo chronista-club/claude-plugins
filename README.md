@@ -19,7 +19,7 @@ Chronista開発スタイルを支えるClaude Codeプラグイン集
 /plugin install chronista-club/claude-plugin-vantage-point
 /plugin install chronista-club/claude-plugin-chronista-style
 /plugin install chronista-club/claude-plugin-fleetflow
-/plugin install chronista-club/but-flow
+/plugin install chronista-club/claude-plugin-but-flow
 ```
 
 ## プラグイン一覧

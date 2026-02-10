@@ -43,7 +43,7 @@
       "description": "GitButler CLIワークフロー - Virtual branches、並行開発、タスクスケジューリング",
       "source": {
         "source": "github",
-        "repo": "chronista-club/but-flow"
+        "repo": "chronista-club/claude-plugin-but-flow"
       }
     }
   ]
