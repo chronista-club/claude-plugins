@@ -39,11 +39,12 @@
       }
     },
     {
-      "name": "but-flow",
-      "description": "GitButler CLIワークフロー - Virtual branches、並行開発、タスクスケジューリング",
+      "name": "cw-flow",
+      "description": "Claude Workers並行開発 - Gitクローンベースのワークスペース分離で安全な並列セッション",
+      "version": "2.1.0",
       "source": {
         "source": "github",
-        "repo": "chronista-club/claude-plugin-but-flow"
+        "repo": "chronista-club/cw-flow"
       }
     }
   ]
