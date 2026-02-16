@@ -41,7 +41,7 @@
     {
       "name": "cw-flow",
       "description": "Claude Workers並行開発 - Gitクローンベースのワークスペース分離で安全な並列セッション",
-      "version": "2.1.0",
+      "version": "3.0.0",
       "source": {
         "source": "github",
         "repo": "chronista-club/cw-flow"
