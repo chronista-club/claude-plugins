@@ -20,6 +20,7 @@ Chronista開発スタイルを支えるClaude Codeプラグイン集
 /plugin install chronista-club/claude-plugin-chronista-style
 /plugin install chronista-club/claude-plugin-fleetflow
 /plugin install chronista-club/claude-plugin-cwflow
+/plugin install chronista-club/claude-plugin-ccwire
 ```
 
 ## プラグイン一覧
@@ -31,6 +32,7 @@ Chronista開発スタイルを支えるClaude Codeプラグイン集
 | **chronista-style** | 開発ワークフロー＆スキル - codeflow、SDG、fleetflow |
 | **fleetflow** | コンテナオーケストレーション - KDL設定でDockerコンテナを管理 |
 | **cwflow** | Claude Workers並行開発 - クローンベースのワークスペース分離で安全な並列セッション |
+| **ccwire** | CC間通信プロトコル - 複数CCセッション間でリアルタイムメッセージング |
 
 ## ライセンス
 

@@ -29,6 +29,7 @@ claude plugin marketplace list
 | creo-memories | 1.0.0 | 🟢 公開中 | MCP, Hooks, Skills |
 | vantage-point | 1.0.0 | 🟡 開発中 | Commands, Hooks |
 | chronista-style | 1.0.0 | 🟢 公開中 | Commands, Skills |
+| ccwire | 0.1.0 | 🟡 開発中 | MCP, Skills, Commands, Hooks |
 
 ---
 

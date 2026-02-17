@@ -46,6 +46,14 @@
         "source": "github",
         "repo": "chronista-club/claude-plugin-cwflow"
       }
+    },
+    {
+      "name": "ccwire",
+      "description": "CC間通信プロトコル - 複数CCセッション間でリアルタイムメッセージング",
+      "source": {
+        "source": "github",
+        "repo": "chronista-club/claude-plugin-ccwire"
+      }
     }
   ]
 }
