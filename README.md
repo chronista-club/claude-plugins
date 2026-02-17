@@ -19,7 +19,7 @@ Chronista開発スタイルを支えるClaude Codeプラグイン集
 /plugin install chronista-club/claude-plugin-vantage-point
 /plugin install chronista-club/claude-plugin-chronista-style
 /plugin install chronista-club/claude-plugin-fleetflow
-/plugin install chronista-club/cw-flow
+/plugin install chronista-club/claude-plugin-cwflow
 ```
 
 ## プラグイン一覧
@@ -30,7 +30,7 @@ Chronista開発スタイルを支えるClaude Codeプラグイン集
 | **vantage-point** | リッチダッシュボード - Markdown、HTML、画像をブラウザで表示 |
 | **chronista-style** | 開発ワークフロー＆スキル - codeflow、SDG、fleetflow |
 | **fleetflow** | コンテナオーケストレーション - KDL設定でDockerコンテナを管理 |
-| **cw-flow** | Claude Workers並行開発 - クローンベースのワークスペース分離で安全な並列セッション |
+| **cwflow** | Claude Workers並行開発 - クローンベースのワークスペース分離で安全な並列セッション |
 
 ## ライセンス
 
