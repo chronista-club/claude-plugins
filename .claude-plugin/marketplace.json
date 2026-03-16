@@ -39,12 +39,11 @@
       }
     },
     {
-      "name": "cwflow",
-      "description": "Claude Workers並行開発 - Gitクローンベースのワークスペース分離で安全な並列セッション",
-      "version": "3.1.0",
+      "name": "ccnav",
+      "description": "Claude Code Navigator - Gitクローンベースのワークスペース分離で安全な並列セッション",
       "source": {
         "source": "github",
-        "repo": "chronista-club/claude-plugin-cwflow"
+        "repo": "chronista-club/claude-plugin-ccnav"
       }
     },
     {
