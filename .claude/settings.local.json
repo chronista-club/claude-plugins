@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: but-flowプラグインを追加\n\nGitButler CLIワークフロープラグインをマーケットプレイスに登録\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C /Users/makoto/repos/claude-plugins log --oneline -3)",
+      "Bash(git -C /Users/makoto/repos/claude-plugins status)",
+      "Bash(git -C /Users/makoto/repos/claude-plugins push origin main)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: プラグイン構造を追加（スキルファイル含む）\n\n.claude-plugin/マニフェストとgb-branch-flowスキルを配置し、\nマーケットプレイスからインストール可能にする\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "mcp__plugin_creo-memories_creo-memories__recall"
+    ]
+  }
+}
