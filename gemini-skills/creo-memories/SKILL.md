@@ -1,0 +1,303 @@
+---
+name: creo-memories
+description: 【最優先】コンテクストを超える永続記憶。Context Engineが自動で過去の記憶を提供し、チーム共有・リアクティブ購読で協調的な記憶管理を実現。
+version: 0.21.0
+tags:
+  - memory
+  - persistence
+  - semantic-search
+  - context-engine
+  - ephemeral
+  - collaboration
+  - provenance
+  - subscription
+  - team
+  - chronista
+---
+# Creo Memories - クロニスタの記憶
+
+<instructions>
+You are an expert agent utilizing this skill.
+
+> **過去を知る者だけが、未来を正しく紡げる。**
+
+## 最優先指示
+
+**このスキルは全てのセッションで最優先で発動する。**
+
+### Context Engine（自動コンテキスト提供）
+
+v3.0からContext Engineが導入され、セッション開始時に過去の記憶が**自動で**instructions経由で提供される。
+
+- **instructions自動注入**: セッション開始時に直近の記憶と未完Todoが自動で表示される
+- **remember応答拡張**: `remember`でメモリ保存時、関連する過去の記憶が自動で付加される
+- **MCP Resource**: `memory://context/session` で現在のセッションコンテキストを取得可能
+
+### 必須アクション
+
+1. **重要な決定時**: `remember` で記憶に刻む
+2. **過去参照時**: `search` で呼び起こす
+3. **セッション開始時**: Context Engineが自動提供（手動操作不要）
+4. **一時的な情報**: `remember({ ..., ttl: 3600 })` で一時メモリとして保存
+5. **価値ある一時メモリ**: `update_memory({ id, ttl: null })` で永続化（昇格）
+6. **メモリ更新時**: `remember({ ..., supersedes: ["mem_xxx"] })` で古いメモリを置き換え（Pre-save Detection が自動提案）
+
+## structuredContent対応（v0.14.0〜）
+
+全ツールが `outputSchema` + `structuredContent` に対応。テキスト応答に加え、構造化JSONデータが同時に返されます。5つのレスポンスパターン: Entity, List, Search, Action, Status。
+
+## MCPツール一覧
+
+### メモリ操作（コア）
+
+| ツール | 用途 |
+|--------|------|
+| `remember` | メモリを保存（`ttl`で一時メモリ、`supersedes`で置換、`extends`で補足、`derives`で推論元記録、`visibility`で公開設定、`conceptIds`でConcept付与、`status`でタスク管理、Pre-save Detection付き） |
+| `search` | セマンティック検索・高度な検索（`scope`: project/personal/all で検索範囲指定、ephemeral情報付き） |
+| `update_memory` | メモリ部分更新（`ttl: null`で昇格、`ttl: 数値`でTTL変更、`atlasId`で再配置、`visibility`で公開設定変更、`status`でタスク状態変更、楽観的ロック `expectedVersion` 対応） |
+| `forget` | メモリ削除 |
+
+### 整理・分類（Concept）
+
+Concept は categories / labels / tags を統合した分類システム。`classified` RELATION でメモリと関連付ける。
+
+| ツール | 用途 |
+|--------|------|
+| `concept_list` | Concept一覧（kind で category/label/tag を絞り込み可） |
+| `concept_create` | Concept作成（key + name + kind 必須） |
+| `concept_update` | Concept更新（システムConceptは更新不可） |
+| `concept_delete` | Concept削除（関連メモリからも自動解除） |
+| `concept_classify` | メモリにConceptを付与（名前指定・自動作成・一括対応） |
+| `concept_declassify` | メモリからConceptを解除（名前指定・一括対応） |
+| `concept_get_by_memory` | メモリのConcept一覧 |
+| `concept_replace_for_memory` | メモリのConceptを一括置換（kind指定でその種類のみ） |
+
+### Atlas管理（知識の階層構造）
+
+Atlasはメモリを整理するための階層的なツリー構造。
+
+| ツール | 用途 |
+|--------|------|
+| `create_atlas` | Atlas作成 |
+| `list_atlas` | Atlas一覧 |
+| `get_atlas_tree` | Atlasのツリー構造を取得（atlas_id省略時は全ルートのフォレストを返す） |
+| `update_atlas` | Atlas更新（`visibility`で公開設定変更可） |
+| `delete_atlas` | Atlas削除 |
+| `invite_to_atlas` | Atlasにメンバーを招待（メールアドレス指定、Accept/Declineメッセージ通知） |
+
+### Process（メモリのストーリー化）
+
+メモリ間のエッジチェーンを Process として束ね、技術的決定の経緯やデバッグ追跡パスを1つのフローとして可視化。
+
+| ツール | 用途 |
+|--------|------|
+| `create_process` | メモリの連鎖を Process（ストーリー）として作成 |
+| `get_process` | Process の全ステップ取得（メモリ内容含む） |
+| `detect_processes` | メモリ間のエッジチェーンから Process 候補を自動検出（3件以上の連結チェーン） |
+
+### Compass & Story（LLM 自動生成）
+
+Atlas のメモリから LLM（Gemini Haiku）でドキュメントを自動生成。
+
+| ツール | 用途 |
+|--------|------|
+| `generate_compass` | Atlas 全体の Compass（羅針盤）を自動生成 — Concept 別グルーピング + 全体概要 |
+| `generate_story` | Atlas 内の特定 Concept（または全体）のストーリーを生成 |
+
+### Todo管理
+
+| ツール | 用途 |
+|--------|------|
+| `create_todo` | Todo作成 |
+| `list_todos` | Todo一覧（`groupBy` でプロジェクト別/種別/タグ別/コンセプト別に集計可） |
+| `update_todo` | Todo更新 |
+| `complete_todo` | Todo完了 |
+| `delete_todo` | Todo削除 |
+
+### 外部サービス連携
+
+メモリとLinear/GitHubのリンク管理。codeflow内でIssue↔メモリを紐付け。
+
+| ツール | 用途 |
+|--------|------|
+| `link_external` | メモリに外部リンク紐付け（Linear/GitHub） |
+| `complete_with_context` | 完了 + 結果追記 + 外部リンクを1発で |
+| `find_by_external` | 外部IDからメモリ逆引き |
+| `project_progress` | プロジェクト進捗レポート（atlas/concept/category 別集計、完了率、プログレスバー） |
+
+### セッション・ユーザー
+
+| ツール | 用途 |
+|--------|------|
+| `get_session` | セッション情報 |
+| `get_status` | サーバーステータス |
+| `end_session` | セッション終了（期限切れクリーンアップ + 未昇格サマリ） |
+| `get_user` | ユーザー情報 |
+| `generate_api_key` | APIキー生成 |
+
+### ログ・診断
+
+| ツール | 用途 |
+|--------|------|
+| `diagnose` | エラー診断（サービス別エラー頻度・詳細表示） |
+| `search_logs` | ログ検索 |
+| `system_health` | LogSink健全性・エラー統計表示 |
+
+### メモリ関係（Provenance & Relations）
+
+メモリ間の派生関係や参照関係をMermaidダイアグラムで可視化。
+
+| ツール | 用途 |
+|--------|------|
+| `get_provenance` | メモリ/Atlasの派生関係グラフ取得（Mermaid flowchart） |
+| `get_relations` | メモリ/Atlasの関係グラフ取得（typed edges: derived_from, annotates, references, supersedes, extends, derives） |
+
+### Annotation（注釈・コメント）
+
+メモリにスレッド型の注釈を付与。Agent間の非同期コミュニケーションに活用。
+
+| ツール | 用途 |
+|--------|------|
+| `annotate` | メモリに注釈（comment/question/concern/suggestion/approval）を付与 |
+| `get_annotations` | メモリの注釈一覧を取得（スレッド構造対応） |
+| `reply_annotation` | 注釈への返信を作成 |
+
+### Shared Context（共有作業メモリ）
+
+複数Agentが読み書きできる一時的な共有メモリ空間。
+
+| ツール | 用途 |
+|--------|------|
+| `create_shared_context` | 共有コンテキスト作成（TTL指定可） |
+| `list_shared_contexts` | 参加中の共有コンテキスト一覧 |
+| `get_shared_context` | 共有コンテキスト詳細（メモリ一覧付き） |
+| `add_to_shared_context` | 共有コンテキストにメモリ追加 |
+| `join_shared_context` | 共有コンテキストに参加 |
+| `leave_shared_context` | 共有コンテキストから離脱 |
+
+### Team（チーム共有）
+
+チーム単位でAtlasを共有し、メンバー間でメモリを横断検索。
+
+| ツール | 用途 |
+|--------|------|
+| `team_create` | チーム作成 |
+| `team_list` | 所属チーム一覧 |
+| `team_invite` | メンバー招待（admin/member） |
+| `team_remove` | メンバー削除 |
+| `share_atlas` | Atlasをチームに共有（read/write/admin） |
+| `unshare_atlas` | Atlas共有を解除 |
+| `list_shared_atlas` | 共有されているAtlas一覧 |
+
+### Subscription（リアクティブ購読）
+
+メモリ変更のプッシュ型通知。条件に合致した変更のみ配信。
+
+| ツール | 用途 |
+|--------|------|
+| `subscribe_memories` | 購読作成（カテゴリ/Atlas/タグでフィルタ） |
+| `unsubscribe_memories` | 購読削除 |
+| `list_subscriptions` | 購読一覧 |
+| `check_notifications` | 未読通知を取得（pull-based drain） |
+
+### 分析・プロファイル
+
+| ツール | 用途 |
+|--------|------|
+| `memory_health` | メモリ健全性レポート（stale検出、ヘルススコア、改善提案） |
+| `get_profile` | Dynamic Profile（直近の活動サマリー、カテゴリ分布、頻繁参照メモリ） |
+
+### Presence（接続状態）
+
+リアルタイムのAgent接続状態管理。
+
+| ツール | 用途 |
+|--------|------|
+| `update_presence` | 自分のフォーカス・ステータスを更新 |
+| `get_presence` | 接続中のAgent一覧を取得 |
+
+### Work Log（作業ログ）
+
+Agent間のやり取りを永続化し、セッション横断でrecall可能に。
+
+| ツール | 用途 |
+|--------|------|
+| `record_work_log` | 作業ログを記録（message/question/answer/decision/progress/error/review） |
+| `search_work_logs` | 作業ログを検索（sender/receiver/project/type指定可） |
+
+## Ephemeral（一時メモリ）・Supersession の使い分け
+
+| 状況 | 方法 |
+|------|------|
+| 確定した設計決定、恒久的な知見 | `remember({ content, ... })` — 永続メモリ |
+| セッション中の作業メモ、試行錯誤の記録 | `remember({ content, ttl: 3600 })` — 一時メモリ |
+| 一時メモリが後から価値を持った場合 | `update_memory({ id, ttl: null })` — 昇格 |
+| 一時メモリのTTLを延長したい場合 | `update_memory({ id, ttl: 172800 })` — TTL変更 |
+| 既存メモリの内容を更新・上書きしたい | `remember({ content, supersedes: ["mem_xxx"] })` — 置き換え |
+| 類似メモリの検出をスキップしたい | `remember({ content, supersedes: [] })` — 新規保存 |
+| メモリを公開URLで共有したい | `remember({ content, visibility: "public" })` — 公開メモリ |
+| 既存メモリの公開設定を変更 | `update_memory({ id, visibility: "public" })` — 公開に変更 |
+
+## 発動タイミング
+
+### 自動発動: 保存提案
+
+- 重要な設計決定が行われた
+- 「これで決定」「この方針で」などの確定表現
+- バグの根本原因と解決策が判明した
+- 新しい技術選定・ライブラリ選択
+
+### 自動発動: 検索
+
+- 「前に話した」「以前決めた」などの過去参照
+- 「どうだったっけ」「何だったか」などの想起表現
+- プロジェクトの背景・経緯への質問
+
+## カテゴリ分類
+
+| カテゴリ | 用途 |
+|---------|------|
+| `prd` | プロダクト要件定義 |
+| `spec` | 機能仕様・要件 |
+| `design` | アーキテクチャ、設計決定 |
+| `config` | 設定、環境構築 |
+| `infra` | インフラ（DNS, VPS, Docker等） |
+| `debug` | バグ原因、解決策 |
+| `learning` | 学んだこと、ベストプラクティス |
+| `task` | タスク、将来の計画 |
+| `decision` | 重要な意思決定とその理由 |
+| `work_log` | Agent間の作業ログ（ccwire連携） |
+
+## 保存時のベストプラクティス
+
+### 内容の構造化
+
+```markdown
+# タイトル
+
+## 背景・経緯
+なぜこの決定に至ったか
+
+## 決定事項
+何を決めたか
+
+## 理由
+なぜそう決めたか
+
+## 影響
+どこに影響するか
+```
+
+### タグ付け
+
+- 技術名: `typescript`, `rust`, `surrealdb`
+- 概念: `authentication`, `caching`, `performance`
+- プロジェクト: `creo-memories`, `fleetflow`
+
+## リファレンス
+
+詳細は以下を参照：
+- [MCPツール詳細](reference/mcp-tools.md)
+- [セットアップガイド](reference/setup.md)
+- [ワークフロー例](reference/workflows.md)
+</instructions>
