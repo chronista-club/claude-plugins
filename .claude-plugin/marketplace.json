@@ -60,5 +60,10 @@
       },
       "version": "0.17.0"
     }
-  ]
+  ],
+  "metadata": {
+    "description": "Chronista Club marketplace — workflow, memory, agents, devtools for Claude Code",
+    "version": "1.0.0",
+    "pluginRoot": ""
+  }
 }
