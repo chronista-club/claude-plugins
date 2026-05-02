@@ -13,7 +13,7 @@
         "source": "github",
         "repo": "chronista-club/claude-plugin-creo-memories"
       },
-      "version": "0.34.0"
+      "version": "0.34.1"
     },
     {
       "name": "vantage-point",
@@ -22,7 +22,7 @@
         "source": "github",
         "repo": "chronista-club/claude-plugin-vantage-point"
       },
-      "version": "0.15.0"
+      "version": "0.15.1"
     },
     {
       "name": "chronista-style",
@@ -31,7 +31,7 @@
         "source": "github",
         "repo": "chronista-club/claude-plugin-chronista-style"
       },
-      "version": "0.24.0"
+      "version": "0.24.1"
     },
     {
       "name": "fleetflow",
@@ -40,7 +40,7 @@
         "source": "github",
         "repo": "chronista-club/claude-plugin-fleetflow"
       },
-      "version": "0.15.0"
+      "version": "0.15.1"
     },
     {
       "name": "ccwire",
@@ -58,7 +58,7 @@
         "source": "github",
         "repo": "chronista-club/claude-plugin-team-bucciarati"
       },
-      "version": "0.17.0"
+      "version": "0.17.1"
     }
   ],
   "metadata": {
