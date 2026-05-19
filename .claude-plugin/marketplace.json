@@ -43,15 +43,6 @@
       "version": "0.15.1"
     },
     {
-      "name": "ccwire",
-      "description": "CC間通信プロトコル - 複数CCセッション間でリアルタイムメッセージング",
-      "source": {
-        "source": "github",
-        "repo": "chronista-club/claude-plugin-ccwire"
-      },
-      "version": "0.9.5"
-    },
-    {
       "name": "team-bucciarati",
       "description": "JoJo Part 5 スタンドエージェントチーム - 7体のスタンドで開発パイプラインをオーケストレーション",
       "source": {
@@ -63,7 +54,7 @@
   ],
   "metadata": {
     "description": "Chronista Club marketplace — workflow, memory, agents, devtools for Claude Code",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "pluginRoot": ""
   }
 }
