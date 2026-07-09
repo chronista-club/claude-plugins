@@ -44,12 +44,12 @@
     },
     {
       "name": "team-bucciarati",
-      "description": "JoJo Part 5 スタンドエージェントチーム - 7体のスタンドで開発パイプラインをオーケストレーション",
+      "description": "JoJo Part 5 スタンドエージェントチーム - 7体のスタンドが強く美しいコードを作る（調査・実装・テスト・レビュー・リファクタ、コミットラインまで）",
       "source": {
         "source": "github",
         "repo": "chronista-club/claude-plugin-team-bucciarati"
       },
-      "version": "0.17.2"
+      "version": "0.18.0"
     }
   ],
   "metadata": {
