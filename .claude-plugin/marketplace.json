@@ -12,8 +12,7 @@
       "source": {
         "source": "github",
         "repo": "chronista-club/claude-plugin-creo-memories"
-      },
-      "version": "0.34.1"
+      }
     },
     {
       "name": "vantage-point",
@@ -21,26 +20,15 @@
       "source": {
         "source": "github",
         "repo": "chronista-club/claude-plugin-vantage-point"
-      },
-      "version": "0.15.2"
+      }
     },
     {
       "name": "chronista-style",
-      "description": "開発ワークフロー＆スキル - codeflow、SDG、fleetflow",
+      "description": "開発ワークフロー＆スキル - codeflow、SDG、TDD、code-review",
       "source": {
         "source": "github",
         "repo": "chronista-club/claude-plugin-chronista-style"
-      },
-      "version": "0.24.1"
-    },
-    {
-      "name": "fleetflow",
-      "description": "コンテナオーケストレーション - KDL設定でDockerコンテナを管理",
-      "source": {
-        "source": "github",
-        "repo": "chronista-club/claude-plugin-fleetflow"
-      },
-      "version": "0.15.1"
+      }
     },
     {
       "name": "team-bucciarati",
@@ -48,13 +36,12 @@
       "source": {
         "source": "github",
         "repo": "chronista-club/claude-plugin-team-bucciarati"
-      },
-      "version": "0.18.0"
+      }
     }
   ],
   "metadata": {
     "description": "Chronista Club marketplace — workflow, memory, agents, devtools for Claude Code",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "pluginRoot": ""
   }
 }
