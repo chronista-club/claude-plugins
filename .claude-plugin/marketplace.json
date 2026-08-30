@@ -24,18 +24,10 @@
     },
     {
       "name": "chronista-style",
-      "description": "開発ワークフロー＆スキル - codeflow、SDG、fleetflow",
+      "description": "開発ワークフロー＆スキル - codeflow、SDG、TDD、code-review",
       "source": {
         "source": "github",
         "repo": "chronista-club/claude-plugin-chronista-style"
-      }
-    },
-    {
-      "name": "fleetflow",
-      "description": "コンテナオーケストレーション - KDL設定でDockerコンテナを管理",
-      "source": {
-        "source": "github",
-        "repo": "chronista-club/claude-plugin-fleetflow"
       }
     },
     {
@@ -49,7 +41,7 @@
   ],
   "metadata": {
     "description": "Chronista Club marketplace — workflow, memory, agents, devtools for Claude Code",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "pluginRoot": ""
   }
 }

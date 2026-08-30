@@ -1,7 +1,12 @@
 # Chronista Club Plugins - 開発・運用情報
 
-> **バージョンの SSoT は各プラグイン repo の `.claude-plugin/plugin.json`。**
-> このドキュメントも `marketplace.json` も版数を持たない。ミラーは必ずドリフトするため。
+> **プラグインのバージョンの SSoT は各 repo の `.claude-plugin/plugin.json`。**
+> このドキュメントも `marketplace.json` の各エントリも、プラグイン版数を持たない
+> （ミラーは必ずドリフトするため）。
+>
+> `marketplace.json` の `metadata.version` は別物で、**登録簿そのもののリビジョン**。
+> プラグインの構成が変わったときだけ bump する（例: #8 ccwire 削除で 1.0.0 → 1.1.0、
+> fleetflow 削除で 1.1.0 → 1.2.0）。版数同期では上げない（#5〜#7 は据え置き）。
 
 ## マーケットプレイス
 
@@ -49,7 +54,6 @@ claude plugin marketplace list
 | creo-memories | [claude-plugin-creo-memories](https://github.com/chronista-club/claude-plugin-creo-memories) | MCP (`creo-memories`) / Commands / Skills / Hooks |
 | vantage-point | [claude-plugin-vantage-point](https://github.com/chronista-club/claude-plugin-vantage-point) | Commands / Skills / Hooks |
 | chronista-style | [claude-plugin-chronista-style](https://github.com/chronista-club/claude-plugin-chronista-style) | MCP (`gitnexus`, `vantage-point`) / Commands / Skills / Hooks |
-| fleetflow | [claude-plugin-fleetflow](https://github.com/chronista-club/claude-plugin-fleetflow) | Skills |
 | team-bucciarati | [claude-plugin-team-bucciarati](https://github.com/chronista-club/claude-plugin-team-bucciarati) | MCP (`teamb-metrics`) / Agents / Commands / Skills |
 
 > **各プラグインが提供する個々のコマンド / スキル / MCP ツールの一覧は、各リポジトリの
@@ -70,6 +74,11 @@ hooks のみ）。意図的な配置かどうか未確認。
 
 ### 廃止済み
 
+- **fleetflow** — *プラグインのみ*メンテナンス終了につき marketplace から削除。
+  **CLI 本体 https://github.com/chronista-club/fleetflow は継続中**（archived ではない）。
+  廃止したのは「CLI の使い方ガイド」を配っていたプラグインの方だけ。
+  なおこのガイドをどのプラグインも引き継いでいない（chronista-style に fleetflow
+  スキルは存在しない）。Gemini CLI 向けには `gemini-skills/fleetflow/` が残っている。
 - **ccwire** — marketplace から削除（#8）、repo も archived
 - **ccnav** — marketplace から削除、機能は ccws (Rust CLI) に吸収
 
@@ -99,7 +108,7 @@ hooks のみ）。意図的な配置かどうか未確認。
 ## このリポジトリの役割
 
 `claude-plugins` は**コードを持たない登録簿**で、`.claude-plugin/marketplace.json` が
-上流 5 リポジトリを指す間接参照になっている。
+上流 4 リポジトリを指す間接参照になっている。
 
 このため**上流が進むと登録簿は黙って古くなる**。実際、`version` フィールドを持っていた頃は
 リリースのたびに `chore(marketplace): sync ...` を手で積む必要があり、#2〜#9 のほぼ全てが
