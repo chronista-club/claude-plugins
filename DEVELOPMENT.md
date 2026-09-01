@@ -64,13 +64,27 @@ claude plugin marketplace list
 > `search_memories` / `forget_memory` と書かれていたが、実在するのは
 > `remember` / `search` / `forget` で、**名前が全て誤りだった**。
 
-### ⚠️ vantage-point の MCP サーバは chronista-style 側で宣言されている
+### ⚠️ VP の MCP サーバは、どのプラグインも配布していない
 
-`claude-plugin-vantage-point` は `.mcp.json` を持たない。VP の MCP サーバ (`vp mcp`) は
-`claude-plugin-chronista-style/.mcp.json` で `gitnexus` と並べて宣言されている。
+`claude-plugin-vantage-point` は `.mcp.json` を持たない。そして**他のどのプラグインも
+VP の MCP サーバ (`vp mcp`) を宣言していない**。
 
-**vantage-point 単体をインストールしても MCP ツールは付いてこない**（commands / skills /
-hooks のみ）。意図的な配置かどうか未確認。
+→ **vantage-point をインストールしても MCP ツールは付いてこない**（commands / skills /
+hooks のみ）。現状 VP の MCP が使えているのは mako のローカル設定によるもの。
+
+紛らわしい点: chronista-style のローカル作業ツリーには `vantage-point` を宣言した
+`.mcp.json` があるが、これは `.gitignore:5` で除外された **symlink**
+（→ `nexus/shared/claude/.mcp.json` = 個人の共有 config store）で、`origin/main` には
+存在しない = 配布物ではない。対照的に creo-memories と team-bucciarati の `.mcp.json` は
+`origin/main` に追跡された実ファイルとして存在する。
+
+> **調べ方**: 「そのプラグインが何を配布するか」は作業ツリーではなく `origin/main` で見ること。
+> `git cat-file -e origin/main:<path>` / `git ls-files <path>` を使う。
+> ローカルの symlink や gitignore されたファイルを配布物と取り違えやすい。
+
+なお VP の定義 `{"command": "vp", "args": ["mcp"]}` は個人パスを含まずポータブルなので、
+VP repo に `.mcp.json` を置けばそのまま配布できる（`vp` バイナリが PATH にあることが前提）。
+採用するかは VP 側の判断。
 
 ### 廃止済み
 
