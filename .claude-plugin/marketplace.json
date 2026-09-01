@@ -32,7 +32,7 @@
     },
     {
       "name": "team-bucciarati",
-      "description": "JoJo Part 5 スタンドエージェントチーム - 7体のスタンドが強く美しいコードを作る（調査・実装・テスト・レビュー・リファクタ、コミットラインまで）",
+      "description": "JoJo Part 5 スタンドエージェントチーム - 開発の前後を支える品質チーム。調査・テスト・レビュー・敵対的検証の4体（コミットラインまで）",
       "source": {
         "source": "github",
         "repo": "chronista-club/claude-plugin-team-bucciarati"
