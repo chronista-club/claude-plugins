@@ -24,7 +24,7 @@
     },
     {
       "name": "chronista-style",
-      "description": "開発ワークフロー＆スキル - codeflow、SDG、TDD、code-review",
+      "description": "開発ワークフローと規律スキル群 - ヒアリングファーストで仕様から実装まで",
       "source": {
         "source": "github",
         "repo": "chronista-club/claude-plugin-chronista-style"

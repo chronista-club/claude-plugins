@@ -30,7 +30,7 @@ Chronista開発スタイルを支えるClaude Codeプラグイン集
 |-----------|------|
 | **creo-memories** | 永続記憶システム - セッションを超えて知識を蓄積 |
 | **vantage-point** | リッチダッシュボード - Markdown、HTML、画像をブラウザで表示 |
-| **chronista-style** | 開発ワークフロー＆スキル - codeflow、SDG、TDD、code-review |
+| **chronista-style** | 開発ワークフローと規律スキル群 - ヒアリングファーストで仕様から実装まで |
 | **team-bucciarati** | JoJo Part 5 スタンドエージェントチーム - 開発の前後を支える品質チーム。調査・テスト・レビュー・敵対的検証の4体（コミットラインまで） |
 
 バージョンは各プラグイン repo の `.claude-plugin/plugin.json` が SSoT。
